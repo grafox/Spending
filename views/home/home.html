@@ -1,0 +1,631 @@
+<ion-view view-title="Indicators System" hide-back-button="true">
+    <ion-content class="padding-top">
+        <div class="item item-thumbnail-left">
+            <img ng-src="{{gravatar}}">
+            <h1>Hello {{name}}</h1>
+        </div>
+        <ul class="list">
+            <li class="item item-toggle">
+                Edit Mode
+                <label class="toggle toggle-assertive">
+                    <input type="checkbox" ng-model="checked">
+                    <div class="track">
+                        <div class="handle"></div>
+                    </div>
+                </label>
+            </li>
+        </ul>
+
+        <div class="card"><h1>The Ministry of Oil</h1>
+        <ion-slide-box on-slide-changed="slideHasChanged($index)">
+            <ion-slide>
+                <div class="box blue"><h3>Production Procedure - Type: 1000 barrels</h3>
+                    <nvd3 options="optionsMOO" data="datamooPpro" config="config"></nvd3>
+                    <ng-form  name="mooPproForm" ng-submit="submitted=true; submit()" ng-show="checked" novalidate >
+                        <ionic-datepicker input-obj="datepickerObjectModal">
+                            <button class="button button-block button-positive"> {{datepickerObjectModal.inputDate | date:'dd - MMMM - yyyy'}}</button>
+                        </ionic-datepicker>
+                        <label class="item item-input item-icon-right">
+                            <input type="number"
+                                   min="0" max="9999"
+                                   string-to-number
+                                   ng-model="mooPproValue"
+                                   ng-required="true"/>
+                        </label>
+                        <button type="submit"
+                                ng-click="mooPpro()"
+                                ng-disabled="mooPproForm.$invalid"
+                                class="button button-block button-positive">Update Data
+                        </button>
+                        <div class="card"></div>
+                    </ng-form>
+                </div>
+            </ion-slide>
+            <ion-slide>
+                <div class="box yellow"><h3>Internal export</h3>
+                    <nvd3 options="optionsMOO" data="datamooIexpo" config="config" ></nvd3>
+                    <ng-form  name="mooIexpoForm" ng-submit="submitted=true; submit()" ng-show="checked" novalidate >
+                        <ionic-datepicker input-obj="datepickerObjectModal">
+                            <button class="button button-block button-positive"> {{datepickerObjectModal.inputDate | date:'dd - MMMM - yyyy'}}</button>
+                        </ionic-datepicker>
+                        <label class="item item-input item-icon-right">
+                            <input type="number"
+                                   min="0" max="9999"
+                                   string-to-number
+                                   ng-model="mooIexpoValue"
+                                   ng-required="true"/>
+                        </label>
+                        <button type="submit"
+                                ng-click="mooIexpo()"
+                                ng-disabled="mooIexpoForm.$invalid"
+                                class="button button-block button-positive">Update Data
+                        </button>
+                        <div class="card"></div>
+                    </ng-form>
+                </div>
+            </ion-slide>
+            <ion-slide>
+                <div class="box pink"><h3>Producing Gasoline</h3>
+                    <nvd3 options="optionsMOO" data="datamooGaspro" config="config"></nvd3>
+                    <ng-form  name="mooGasproForm" ng-submit="submitted=true; submit()" ng-show="checked" novalidate >
+                        <ionic-datepicker input-obj="datepickerObjectModal">
+                            <button class="button button-block button-positive"> {{datepickerObjectModal.inputDate | date:'dd - MMMM - yyyy'}}</button>
+                        </ionic-datepicker>
+                        <label class="item item-input item-icon-right">
+                            <input type="number"
+                                   min="0" max="9999"
+                                   string-to-number
+                                   ng-model="mooGasproValue"
+                                   ng-required="true"/>
+                        </label>
+                        <button type="submit"
+                                ng-click="mooGaspro()"
+                                ng-disabled="mooGasproForm.$invalid"
+                                class="button button-block button-positive">Update Data
+                        </button>
+                        <div class="card"></div>
+                    </ng-form>
+                </div>
+            </ion-slide>
+            <ion-slide>
+                <div class="box red"><h3>Import gasoline</h3>
+                    <nvd3 options="optionsMOO" data="datamooIgas" config="config"></nvd3>
+                    <ng-form  name="mooIgasForm" ng-submit="submitted=true; submit()" ng-show="checked" novalidate >
+                        <ionic-datepicker input-obj="datepickerObjectModal">
+                            <button class="button button-block button-positive"> {{datepickerObjectModal.inputDate | date:'dd - MMMM - yyyy'}}</button>
+                        </ionic-datepicker>
+                        <label class="item item-input item-icon-right">
+                            <input type="number"
+                                   min="0" max="9999"
+                                   string-to-number
+                                   ng-model="mooIgasValue"
+                                   ng-required="true"/>
+                        </label>
+                        <button type="submit"
+                                ng-click="mooIgas()"
+                                ng-disabled="mooIgasForm.$invalid"
+                                class="button button-block button-positive">Update Data
+                        </button>
+                        <div class="card"></div>
+                    </ng-form>
+                </div>
+            </ion-slide>
+            <ion-slide>
+                <div class="box white"><h3>Gasoline consumption</h3>
+                    <nvd3 options="optionsMOO" data="datamooGascons" config="config"></nvd3>
+                    <ng-form  name="mooGasconsForm" ng-submit="submitted=true; submit()" ng-show="checked" novalidate >
+                        <ionic-datepicker input-obj="datepickerObjectModal">
+                            <button class="button button-block button-positive"> {{datepickerObjectModal.inputDate | date:'dd - MMMM - yyyy'}}</button>
+                        </ionic-datepicker>
+                        <label class="item item-input item-icon-right">
+                            <input type="number"
+                                   min="0" max="9999"
+                                   string-to-number
+                                   ng-model="mooGasconsValue"
+                                   ng-required="true"/>
+                        </label>
+                        <button type="submit"
+                                ng-click="mooGascons()"
+                                ng-disabled="mooGasconsForm.$invalid"
+                                class="button button-block button-positive">Update Data
+                        </button>
+                        <div class="card"></div>
+                    </ng-form>
+                </div>
+            </ion-slide>
+        </ion-slide-box>
+        </div>
+
+
+         <div class="card"><h1>The Ministry of Electricity</h1>
+            <ion-slide-box on-slide-changed="slideHasChanged($index)">
+                <ion-slide>
+                    <div class="box blue"><h3>Hours of processing to the provinces per hour</h3>
+                        <nvd3 options="optionsMOE" data="datamoeHpro" config="config" color="colorFunction()"></nvd3>
+                        <ng-form  name="moeHproForm" ng-submit="submitted=true; submit()" ng-show="checked" novalidate >
+                            <ionic-datepicker input-obj="datepickerObjectModal">
+                                <button class="button button-block button-positive"> {{datepickerObjectModal.inputDate | date:'dd - MMMM - yyyy'}}</button>
+                            </ionic-datepicker>
+                            <label class="item item-input item-icon-right">
+                                <input type="number"
+                                       min="0" max="9999"
+                                       string-to-number
+                                       ng-model="moeHproValue"
+                                       ng-required="true"/>
+                            </label>
+                            <button type="submit"
+                                    ng-click="moeHpro()"
+                                    ng-disabled="moeHproForm.$invalid"
+                                    class="button button-block button-positive">Update Data
+                            </button>
+                            <div class="card"></div>
+                        </ng-form>
+                    </div>
+                </ion-slide>
+                <ion-slide>
+                    <div class="box yellow"><h3>Hours of processing to Baghdad per hour</h3>
+                        <nvd3 options="optionsMOE" data="datamoeHbaghdad" config="config"></nvd3>
+                        <ng-form  name="moeHbaghdadForm" ng-submit="submitted=true; submit()" ng-show="checked" novalidate >
+                            <ionic-datepicker input-obj="datepickerObjectModal">
+                                <button class="button button-block button-positive"> {{datepickerObjectModal.inputDate | date:'dd - MMMM - yyyy'}}</button>
+                            </ionic-datepicker>
+                            <label class="item item-input item-icon-right">
+                                <input type="number"
+                                       min="0" max="9999"
+                                       string-to-number
+                                       ng-model="moeHbaghdadValue"
+                                       ng-required="true"/>
+                            </label>
+                            <button type="submit"
+                                    ng-click="moeHbaghdad()"
+                                    ng-disabled="moeHbaghdadForm.$invalid"
+                                    class="button button-block button-positive">Update Data
+                            </button>
+                            <div class="card"></div>
+                        </ng-form>
+                    </div>
+                </ion-slide>
+            </ion-slide-box>
+        </div>
+        <div class="card"></div>
+        <div class="card">
+
+            <div class="card"><h1>Ministry of health</h1>
+                <ion-slide-box on-slide-changed="slideHasChanged($index)">
+                    <ion-slide>
+                        <div class="box blue"><h3>PBirths</h3>
+                            <nvd3 options="optionsMOH" data="datamohBirths" config="config"></nvd3>
+                            <ng-form  name="mohBirthsForm" ng-submit="submitted=true; submit()" ng-show="checked" novalidate >
+                                <ionic-datepicker input-obj="datepickerObjectModal">
+                                    <button class="button button-block button-positive"> {{datepickerObjectModal.inputDate | date:'dd - MMMM - yyyy'}}</button>
+                                </ionic-datepicker>
+                                <label class="item item-input item-icon-right">
+                                    <input type="number"
+                                           min="0" max="9999"
+                                           string-to-number
+                                           ng-model="mohBirthsValue"
+                                           ng-required="true"/>
+                                </label>
+                                <button type="submit"
+                                        ng-click="mohBirths()"
+                                        ng-disabled="mohBirthsForm.$invalid"
+                                        class="button button-block button-positive">Update Data
+                                </button>
+                                <div class="card"></div>
+                            </ng-form>
+                        </div>
+                    </ion-slide>
+                    <ion-slide>
+                        <div class="box yellow"><h3>Deaths</h3>
+                            <nvd3 options="optionsMOH" data="datamohDeaths" config="config"></nvd3>
+                            <ng-form  name="mohDeathsForm" ng-submit="submitted=true; submit()" ng-show="checked" novalidate >
+                                <ionic-datepicker input-obj="datepickerObjectModal">
+                                    <button class="button button-block button-positive"> {{datepickerObjectModal.inputDate | date:'dd - MMMM - yyyy'}}</button>
+                                </ionic-datepicker>
+                                <label class="item item-input item-icon-right">
+                                    <input type="number"
+                                           min="0" max="9999"
+                                           string-to-number
+                                           ng-model="mohDeathsValue"
+                                           ng-required="true"/>
+                                </label>
+                                <button type="submit"
+                                        ng-click="mohDeaths()"
+                                        ng-disabled="mohDeathsForm.$invalid"
+                                        class="button button-block button-positive">Update Data
+                                </button>
+                                <div class="card"></div>
+                            </ng-form>
+                        </div>
+                    </ion-slide>
+                </ion-slide-box>
+            </div>
+            <div class="card"></div>
+
+            <div class="card"><h1>Ministry of Water Resources</h1>
+                <ion-slide-box on-slide-changed="slideHasChanged($index)">
+                    <ion-slide>
+                        <div class="box blue"><h3>Water levels</h3>
+                            <nvd3 options="optionsMOW" data="datamowWlevel" config="config"></nvd3>
+                            <ng-form  name="mowWlevelForm" ng-submit="submitted=true; submit()" ng-show="checked" novalidate >
+                                <ionic-datepicker input-obj="datepickerObjectModal">
+                                    <button class="button button-block button-positive"> {{datepickerObjectModal.inputDate | date:'dd - MMMM - yyyy'}}</button>
+                                </ionic-datepicker>
+                                <label class="item item-input item-icon-right">
+                                    <input type="number"
+                                           min="0" max="9999"
+                                           string-to-number
+                                           ng-model="mowWlevelValue"
+                                           ng-required="true"/>
+                                </label>
+                                <button type="submit"
+                                        ng-click="mowWlevel()"
+                                        ng-disabled="mowWlevelForm.$invalid"
+                                        class="button button-block button-positive">Update Data
+                                </button>
+                                <div class="card"></div>
+                            </ng-form>
+                        </div>
+                    </ion-slide>
+                    <ion-slide>
+                        <div class="box yellow"><h3>Electricity generated</h3>
+                            <nvd3 options="optionsMOW" data="datamowEgen" config="config"></nvd3>
+                            <ng-form  name="mowEgenForm" ng-submit="submitted=true; submit()" ng-show="checked" novalidate >
+                                <ionic-datepicker input-obj="datepickerObjectModal">
+                                    <button class="button button-block button-positive"> {{datepickerObjectModal.inputDate | date:'dd - MMMM - yyyy'}}</button>
+                                </ionic-datepicker>
+                                <label class="item item-input item-icon-right">
+                                    <input type="number"
+                                           min="0" max="9999"
+                                           string-to-number
+                                           ng-model="mowEgenValue"
+                                           ng-required="true"/>
+                                </label>
+                                <button type="submit"
+                                        ng-click="mowEgen()"
+                                        ng-disabled="mowEgenForm.$invalid"
+                                        class="button button-block button-positive">Update Data
+                                </button>
+                                <div class="card"></div>
+                            </ng-form>
+                        </div>
+                    </ion-slide>
+                    <ion-slide>
+                        <div class="box pink"><h3>Live Storage</h3>
+                            <nvd3 options="optionsMOW" data="datamowLstor" config="config"></nvd3>
+                            <ng-form  name="mowLstorForm" ng-submit="submitted=true; submit()" ng-show="checked" novalidate >
+                                <ionic-datepicker input-obj="datepickerObjectModal">
+                                    <button class="button button-block button-positive"> {{datepickerObjectModal.inputDate | date:'dd - MMMM - yyyy'}}</button>
+                                </ionic-datepicker>
+                                <label class="item item-input item-icon-right">
+                                    <input type="number"
+                                           min="0" max="9999"
+                                           string-to-number
+                                           ng-model="mowLstorValue"
+                                           ng-required="true"/>
+                                </label>
+                                <button type="submit"
+                                        ng-click="mowLstor()"
+                                        ng-disabled="mowLstorForm.$invalid"
+                                        class="button button-block button-positive">Update Data
+                                </button>
+                                <div class="card"></div>
+                            </ng-form>
+                        </div>
+                    </ion-slide>
+                    <ion-slide>
+                        <div class="box red"><h3>The levels of the lower windows and power output</h3>
+                            <nvd3 options="optionsMOW" data="datamowLforc" config="config"></nvd3>
+                            <ng-form  name="mowLforcForm" ng-submit="submitted=true; submit()" ng-show="checked" novalidate >
+                                <ionic-datepicker input-obj="datepickerObjectModal">
+                                    <button class="button button-block button-positive"> {{datepickerObjectModal.inputDate | date:'dd - MMMM - yyyy'}}</button>
+                                </ionic-datepicker>
+                                <label class="item item-input item-icon-right">
+                                    <input type="number"
+                                           min="0" max="9999"
+                                           string-to-number
+                                           ng-model="mowLforcValue"
+                                           ng-required="true"/>
+                                </label>
+                                <button type="submit"
+                                        ng-click="mowLforc()"
+                                        ng-disabled="mowLforcForm.$invalid"
+                                        class="button button-block button-positive">Update Data
+                                </button>
+                                <div class="card"></div>
+                            </ng-form>
+                        </div>
+                    </ion-slide>
+                </ion-slide-box>
+            </div>
+            <div class="card"></div>
+
+            <div class="card"><h1>Ministry of Transportation</h1>
+                <ion-slide-box on-slide-changed="slideHasChanged($index)">
+                    <ion-slide>
+                        <div class="box blue"><h3>Air travelers</h3>
+                            <nvd3 options="optionsMOT" data="datamotAtravl" config="config"></nvd3>
+                            <ng-form  name="motAtravlForm" ng-submit="submitted=true; submit()" ng-show="checked" novalidate >
+                                <ionic-datepicker input-obj="datepickerObjectModal">
+                                    <button class="button button-block button-positive"> {{datepickerObjectModal.inputDate | date:'dd - MMMM - yyyy'}}</button>
+                                </ionic-datepicker>
+                                <label class="item item-input item-icon-right">
+                                    <input type="number"
+                                           min="0" max="9999"
+                                           string-to-number
+                                           ng-model="motAtravlValue"
+                                           ng-required="true"/>
+                                </label>
+                                <button type="submit"
+                                        ng-click="motAtravl()"
+                                        ng-disabled="motAtravlForm.$invalid"
+                                        class="button button-block button-positive">Update Data
+                                </button>
+                                <div class="card"></div>
+                            </ng-form>
+                        </div>
+                    </ion-slide>
+                    <ion-slide>
+                        <div class="box yellow"><h3>Travelers by land</h3>
+                            <nvd3 options="optionsMOT" data="datamotTland" config="config"></nvd3>
+                            <ng-form  name="motTlandForm" ng-submit="submitted=true; submit()" ng-show="checked" novalidate >
+                                <ionic-datepicker input-obj="datepickerObjectModal">
+                                    <button class="button button-block button-positive"> {{datepickerObjectModal.inputDate | date:'dd - MMMM - yyyy'}}</button>
+                                </ionic-datepicker>
+                                <label class="item item-input item-icon-right">
+                                    <input type="number"
+                                           min="0" max="999999"
+                                           string-to-number
+                                           ng-model="motTlandValue"
+                                           ng-required="true"/>
+                                </label>
+                                <button type="submit"
+                                        ng-click="motTland()"
+                                        ng-disabled="motTlandForm.$invalid"
+                                        class="button button-block button-positive">Update Data
+                                </button>
+                                <div class="card"></div>
+                            </ng-form>
+                        </div>
+                    </ion-slide>
+                    <ion-slide>
+                        <div class="box pink"><h3>Cargo ports</h3>
+                            <nvd3 options="optionsMOT" data="datamotCport" config="config"></nvd3>
+                            <ng-form  name="motCportForm" ng-submit="submitted=true; submit()" ng-show="checked" novalidate >
+                                <ionic-datepicker input-obj="datepickerObjectModal">
+                                    <button class="button button-block button-positive"> {{datepickerObjectModal.inputDate | date:'dd - MMMM - yyyy'}}</button>
+                                </ionic-datepicker>
+                                <label class="item item-input item-icon-right">
+                                    <input type="number"
+                                           min="0" max="99999"
+                                           string-to-number
+                                           ng-model="motCportValue"
+                                           ng-required="true"/>
+                                </label>
+                                <button type="submit"
+                                        ng-click="motCport()"
+                                        ng-disabled="motCportForm.$invalid"
+                                        class="button button-block button-positive">Update Data
+                                </button>
+                                <div class="card"></div>
+                            </ng-form>
+                        </div>
+                    </ion-slide>
+                    <ion-slide>
+                        <div class="box red"><h3>Goods transported by trucks</h3>
+                            <nvd3 options="optionsMOT" data="datamotGtruck" config="config"></nvd3>
+                            <ng-form  name="motGtruckForm" ng-submit="submitted=true; submit()" ng-show="checked" novalidate >
+                                <ionic-datepicker input-obj="datepickerObjectModal">
+                                    <button class="button button-block button-positive"> {{datepickerObjectModal.inputDate | date:'dd - MMMM - yyyy'}}</button>
+                                </ionic-datepicker>
+                                <label class="item item-input item-icon-right">
+                                    <input type="number"
+                                           min="0" max="9999"
+                                           string-to-number
+                                           ng-model="motGtruckValue"
+                                           ng-required="true"/>
+                                </label>
+                                <button type="submit"
+                                        ng-click="motGtruck()"
+                                        ng-disabled="motGtruckForm.$invalid"
+                                        class="button button-block button-positive">Update Data
+                                </button>
+                                <div class="card"></div>
+                            </ng-form>
+                        </div>
+                    </ion-slide>
+                    <ion-slide>
+                        <div class="box white"><h3>Goods transported by rail</h3>
+                            <nvd3 options="optionsMOT" data="datamotGrail" config="config"></nvd3>
+                            <ng-form  name="motGrailForm" ng-submit="submitted=true; submit()" ng-show="checked" novalidate >
+                                <ionic-datepicker input-obj="datepickerObjectModal">
+                                    <button class="button button-block button-positive"> {{datepickerObjectModal.inputDate | date:'dd - MMMM - yyyy'}}</button>
+                                </ionic-datepicker>
+                                <label class="item item-input item-icon-right">
+                                    <input type="number"
+                                           min="0" max="999"
+                                           string-to-number
+                                           ng-model="motGrailValue"
+                                           ng-required="true"/>
+                                </label>
+                                <button type="submit"
+                                        ng-click="motGrail()"
+                                        ng-disabled="motGrailForm.$invalid"
+                                        class="button button-block button-positive">Update Data
+                                </button>
+                                <div class="card"></div>
+                            </ng-form>
+                        </div>
+                    </ion-slide>
+                    <ion-slide>
+                        <div class="box gray"><h3>Passers-by aircraft</h3>
+                            <nvd3 options="optionsMOT" data="datamotPassair" config="config"></nvd3>
+                            <ng-form  name="motPassairForm" ng-submit="submitted=true; submit()" ng-show="checked" novalidate >
+                                <ionic-datepicker input-obj="datepickerObjectModal">
+                                    <button class="button button-block button-positive"> {{datepickerObjectModal.inputDate | date:'dd - MMMM - yyyy'}}</button>
+                                </ionic-datepicker>
+                                <label class="item item-input item-icon-right">
+                                    <input type="number"
+                                           min="0" max="999"
+                                           string-to-number
+                                           ng-model="motPassairValue"
+                                           ng-required="true"/>
+                                </label>
+                                <button type="submit"
+                                        ng-click="motPassair()"
+                                        ng-disabled="motPassairForm.$invalid"
+                                        class="button button-block button-positive">Update Data
+                                </button>
+                                <div class="card"></div>
+                            </ng-form>
+                        </div>
+                    </ion-slide>
+                    <ion-slide>
+                        <div class="box black"><h3>Marine units hyphen</h3>
+                            <nvd3 options="optionsMOT" data="datamotMarine" config="config"></nvd3>
+                            <ng-form  name="motMarineForm" ng-submit="submitted=true; submit()" ng-show="checked" novalidate >
+                                <ionic-datepicker input-obj="datepickerObjectModal">
+                                    <button class="button button-block button-positive"> {{datepickerObjectModal.inputDate | date:'dd - MMMM - yyyy'}}</button>
+                                </ionic-datepicker>
+                                <label class="item item-input item-icon-right">
+                                    <input type="number"
+                                           min="0" max="999"
+                                           string-to-number
+                                           ng-model="motMarineValue"
+                                           ng-required="true"/>
+                                </label>
+                                <button type="submit"
+                                        ng-click="motMarine()"
+                                        ng-disabled="motMarineForm.$invalid"
+                                        class="button button-block button-positive">Update Data
+                                </button>
+                                <div class="card"></div>
+                            </ng-form>
+                        </div>
+                    </ion-slide>
+                    <ion-slide>
+                        <div class="box silver"><h3>Income withdrawn</h3>
+                            <nvd3 options="optionsMOT" data="datamotIncome" config="config"></nvd3>
+                            <ng-form  name="motIncomeForm" ng-submit="submitted=true; submit()" ng-show="checked" novalidate >
+                                <ionic-datepicker input-obj="datepickerObjectModal">
+                                    <button class="button button-block button-positive"> {{datepickerObjectModal.inputDate | date:'dd - MMMM - yyyy'}}</button>
+                                </ionic-datepicker>
+                                <label class="item item-input item-icon-right">
+                                    <input type="number"
+                                           min="0" max="999"
+                                           string-to-number
+                                           ng-model="motIncomeValue"
+                                           ng-required="true"/>
+                                </label>
+                                <button type="submit"
+                                        ng-click="motIncome()"
+                                        ng-disabled="motIncomeForm.$invalid"
+                                        class="button button-block button-positive">Update Data
+                                </button>
+                                <div class="card"></div>
+                            </ng-form>
+                        </div>
+                    </ion-slide>
+                </ion-slide-box>
+            </div>
+
+            <div class="card"><h1>Central Bank</h1>
+                <ion-slide-box on-slide-changed="slideHasChanged($index)">
+                    <ion-slide>
+                        <div class="box blue"><h3>exchange rate</h3>
+                            <nvd3 options="optionsCB" data="datacbExchange" config="config"></nvd3>
+                            <ng-form  name="cbExchangeForm" ng-submit="submitted=true; submit()" ng-show="checked" novalidate >
+                                <ionic-datepicker input-obj="datepickerObjectModal">
+                                    <button class="button button-block button-positive"> {{datepickerObjectModal.inputDate | date:'dd - MMMM - yyyy'}}</button>
+                                </ionic-datepicker>
+                                <label class="item item-input item-icon-right">
+                                    <input type="number"
+                                           min="0" max="9999"
+                                           string-to-number
+                                           ng-model="cbExchangeValue"
+                                           ng-required="true"/>
+                                </label>
+                                <button type="submit"
+                                        ng-click="cbExchange()"
+                                        ng-disabled="cbExchangeForm.$invalid"
+                                        class="button button-block button-positive">Update Data
+                                </button>
+                                <div class="card"></div>
+                            </ng-form>
+                        </div>
+                    </ion-slide>
+                    <ion-slide>
+                        <div class="box yellow"><h3>Exporting currency</h3>
+                            <nvd3 options="optionsCB" data="datacbEcurrency" config="config" color="colorFunction()"></nvd3>
+                            <ng-form  name="cbEcurrencyForm" ng-submit="submitted=true; submit()" ng-show="checked" novalidate >
+                                <ionic-datepicker input-obj="datepickerObjectModal">
+                                    <button class="button button-block button-positive"> {{datepickerObjectModal.inputDate | date:'dd - MMMM - yyyy'}}</button>
+                                </ionic-datepicker>
+                                <label class="item item-input item-icon-right">
+                                    <input type="number"
+                                           min="0" max="99"
+                                           string-to-number
+                                           ng-model="cbEcurrencyValue"
+                                           ng-required="true"/>
+                                </label>
+                                <button type="submit"
+                                        ng-click="cbEcurrency()"
+                                        ng-disabled="cbEcurrencyForm.$invalid"
+                                        class="button button-block button-positive">Update Data
+                                </button>
+                                <div class="card"></div>
+                            </ng-form>
+                        </div>
+                    </ion-slide>
+                    <ion-slide>
+                        <div class="box pink"><h3>Foreign reserves</h3>
+                            <nvd3 options="optionsCB" data="datacbFreserve" config="config"></nvd3>
+                            <ng-form  name="cbFreserveForm" ng-submit="submitted=true; submit()" ng-show="checked" novalidate >
+                                <ionic-datepicker input-obj="datepickerObjectModal">
+                                    <button class="button button-block button-positive"> {{datepickerObjectModal.inputDate | date:'dd - MMMM - yyyy'}}</button>
+                                </ionic-datepicker>
+                                <label class="item item-input item-icon-right">
+                                    <input type="number"
+                                           min="0" max="9999"
+                                           string-to-number
+                                           ng-model="cbFreserveValue"
+                                           ng-required="true"/>
+                                </label>
+                                <button type="submit"
+                                        ng-click="cbFreserve()"
+                                        ng-disabled="cbFreserveForm.$invalid"
+                                        class="button button-block button-positive">Update Data
+                                </button>
+                                <div class="card"></div>
+                            </ng-form>
+                        </div>
+                    </ion-slide>
+                    <ion-slide>
+                        <div class="box red"><h3>Foreign currency sales</h3>
+                            <nvd3 options="optionsCB" data="datacbFsale" config="config"></nvd3>
+                            <ng-form  name="cbFsaleForm" ng-submit="submitted=true; submit()" ng-show="checked" novalidate >
+                                <ionic-datepicker input-obj="datepickerObjectModal">
+                                    <button class="button button-block button-positive"> {{datepickerObjectModal.inputDate | date:'dd - MMMM - yyyy'}}</button>
+                                </ionic-datepicker>
+                                <label class="item item-input item-icon-right">
+                                    <input type="number"
+                                           min="0" max="999"
+                                           string-to-number
+                                           ng-model="cbFsaleValue"
+                                           ng-required="true"/>
+                                </label>
+                                <button type="submit"
+                                        ng-click="cbFsale()"
+                                        ng-disabled="cbFsaleForm.$invalid"
+                                        class="button button-block button-positive">Update Data
+                                </button>
+                                <div class="card"></div>
+                            </ng-form>
+                        </div>
+                    </ion-slide>
+                </ion-slide-box>
+            </div>
+          <button ng-click="logOut()" class="button button-block button-positive">Log out</button>
+            <h5>Copyright office prime minister of Iraq. Power By Grafox.net</h5>
+    </ion-content>   
+</ion-view>
