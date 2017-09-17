@@ -22,7 +22,6 @@ angular.module('App').factory('Utils', function($ionicLoading,$ionicPopup) {
 				template: msg
 			});
 			alertPopup.then(function(res) {
-				//console.log('Registrado correctamente.');
 			});
 		},
 
